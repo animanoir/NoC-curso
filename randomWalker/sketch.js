@@ -20,6 +20,8 @@ function Walker() {
 
 //Esto es una función para que camine.
 this.walk = function() {
+  this.acc = createVector(random(-1, 1), random(-1, 1));
+  this.acc.mult(0.1); //Se múltiplca la aceleración por un escalar.
   this.vel.add(this.acc);
   this.pos.add(this.vel);
 //  this.pos.x += random(-5, 5);
