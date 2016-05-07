@@ -14,18 +14,14 @@ function draw() {
 function Walker() {
   this.pos = createVector(width / 2, height / 2); //Función que sirve para crear un vector con dos variables, x y y.
   this.vel = createVector(0, 0); //Velocidad
-  this.acc = createVector(0, 0.1); //Aceleración
-// this.x = width/2;
-// this.y = height/2;
 
 //Esto es una función para que camine.
 this.walk = function() {
-  this.acc = createVector(random(-1, 1), random(-1, 1));
+  var mouse = createVector(mouseX, mouseY);
+  this.acc = p5.Vector.sub(mouse, this.pos); //La diferencia entre la posisión del objeto w (vector) y la posición del mouse (otro vector).
   this.acc.mult(0.1); //Se múltiplca la aceleración por un escalar.
   this.vel.add(this.acc);
   this.pos.add(this.vel);
-//  this.pos.x += random(-5, 5);
-//  this.pos.y += random(-5, 5);
 
 }
 
