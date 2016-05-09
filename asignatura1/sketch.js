@@ -43,7 +43,7 @@ function Walker() {
   };
 
   this.display = function () {
-    var escalar = random(20);
+    var escalar = random(10);
     var n = noise(millis()) * escalar;
     //Dibuja un círculo como un Walker
     noStroke();
