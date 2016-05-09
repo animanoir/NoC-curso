@@ -1,5 +1,5 @@
 //Óscar A. Montiel
-//The Nature of Code en Kadenze
+//The Nature of Code en Kadenze (Curso, tarea 1).
 //twitter: @_geosmina
 //github: https://animanoir.github.io/
 
@@ -45,7 +45,6 @@ function Walker() {
   this.display = function () {
     var escalar = random(20);
     var n = noise(millis()) * escalar;
-    print(n);
     //Dibuja un círculo como un Walker
     noStroke();
     fill(c);
