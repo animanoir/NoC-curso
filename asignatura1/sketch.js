@@ -1,5 +1,5 @@
 //Óscar A. Montiel
-//The Nature of Code en Kadenze (Curso, tarea 1).
+//The Nature of Code en Kadenze (Course, homework 1).
 //twitter: @_geosmina
 //github: https://animanoir.github.io/
 
@@ -9,8 +9,8 @@ var walkers = new Array(250);
 function setup() {
   //Escenario
   createCanvas(800, 600);
-  background(random(255), random(255), random(255));
-  smooth(); //Le pone antialias, creo.
+  background(0);
+  smooth(); //I think it smooths it.
 
   //Inicializa objetos en el arreglo.
   for (var i = 0; i < walkers.length; i++) {
@@ -20,8 +20,6 @@ function setup() {
 }
 
 function draw() {
-  fill(0, 10);
-  rect(0, 0, width, height);
   for (var i = 0; i < walkers.length; i++) {
     walkers[i].display();
     walkers[i].update();
@@ -30,25 +28,35 @@ function draw() {
 
 //Walker class
 function Walker() {
-  //Crea un Walker en una parte al azar del canvas.
-  this.pos = createVector(random(width), random(height));
-  var c = color(random(255), random(255), random(255));
+  var escalar = random(10); //That will multiply the noise.
+  var n = noise(millis()) * escalar;
+  this.pos = createVector(random(width), random(height));  //Creates a Walker at a random coordinate in the canvas.
+  var c = color(random(255), random(250), random(255));
   
 
   //Funciones
   this.update = function () {
-    //Mueve el objeto al azaar.
-    var vel = createVector(random(-1, 1), random(-1, 1));
-    this.pos.add(vel);
+    var mouse = createVector(mouseX, mouseY); //Mouse vector
+    this.acc = p5.Vector.sub(mouse, this.pos); //Acceleration vector
+    this.acc.mult(0.01);
+    this.vel = createVector(random(-5, 5), random(-5, 5));//Mueve el objeto al azar.
+    this.vel.add(this.acc);
+    this.pos.add(this.vel);
   };
 
   this.display = function () {
-    var escalar = random(10);
-    var n = noise(millis()) * escalar;
+    
     //Dibuja un círculo como un Walker
     noStroke();
     fill(c);
     ellipse(this.pos.x, this.pos.y, n, n); //this.pos.x y .y se refiere a los atributos x y y de un createVector.
   };
+  
+ 
+ 
+  
 }
 
+ function mouseClicked(){
+    setup();
+  }
