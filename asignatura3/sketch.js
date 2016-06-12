@@ -1,5 +1,5 @@
 //Óscar A. Montiel
-//The Nature of Code en Kadenze (Course, homework 3).
+//The Nature of Code, (Course, homework 3).
 //twitter: @_geosmina
 //github: https://animanoir.github.io/
 
