@@ -14,6 +14,9 @@ function setup() {
 function draw() {
   background(0);
 
+  var target =  createVector(mouseX, mouseY); //The target will be the mouse position.
+
+  vehicle.seek(target); //Will seek the target.
   vehicle.update();
   vehicle.display();
 
